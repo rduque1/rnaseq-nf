@@ -50,6 +50,7 @@ log.info """\
 transcriptome_file = file(params.transcriptome)
 multiqc_file = file(params.multiqc)
 
+println config
 
 Channel
     .fromFilePairs( params.reads )
