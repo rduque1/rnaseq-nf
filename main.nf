@@ -51,6 +51,7 @@ transcriptome_file = file(params.transcriptome)
 multiqc_file = file(params.multiqc)
 
 println config
+println config.docker
 
 Channel
     .fromFilePairs( params.reads )
