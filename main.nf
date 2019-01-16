@@ -118,13 +118,28 @@ process multiqc {
     file(config) from multiqc_file
 
     output:
-    file('multiqc_report.html')
+    file('multiqc_report.html') into report_ch
 
     script:
     """
     cp $config/* .
     echo "custom_logo: \$PWD/logo.png" >> multiqc_config.yaml
     multiqc .
+    """
+}
+
+process testtest {
+    echo true
+
+    input:
+    file(report) from report_ch
+
+    output:
+    file('multiqc_report2.html')
+
+    script:
+    """
+    cat $report > multiqc_report2.html
     """
 }
 
